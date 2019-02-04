@@ -27,8 +27,8 @@ class DFS:
 
     def printResult(self):
         for item in self.result:
-            print(item, end=' ')
+            print(item, end=' -> ')
 
 graph = DFS()
-graph.DFS('S')
+graph.DFS('Acapulco')
 graph.printResult()
