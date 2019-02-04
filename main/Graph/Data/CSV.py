@@ -1,7 +1,7 @@
 import csv
 from queue import Queue
 
-from main.graph.Constants import Constants
+from main.Graph.Utilities.Constants import Constants
 
 
 class CSV(object):

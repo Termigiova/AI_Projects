@@ -1,8 +1,8 @@
 from queue import Queue
 
-from main.graph.Constants import Constants
-from main.graph.Data.CSV import CSV
-from main.graph.Node import Node
+from main.Graph.Utilities.Constants import Constants
+from main.Graph.Data.CSV import CSV
+from main.Graph.Data_Structures.Node import Node
 
 
 class Graph(object):
@@ -18,8 +18,6 @@ class Graph(object):
         self.addFirstNodeToDiary()
         if not self.diary.empty():
             self.addNodeToGraph(self.diary.get())
-        print("Printing graph key values")
-        self.printGraph()
 
     def addFirstNodeToDiary(self):
         firstDataItem = self.data[Constants.FIRST_ITEM];
@@ -28,8 +26,8 @@ class Graph(object):
 
     def addNodeToGraph(self, node):
         if not self.findNodeInGraph(node):
-            print('Appending text element as graph key: ', node.name)
             self.graph[node.name] = []
+
         connections = self.findAllConnections(node)
         if connections:
             for connection in connections:
@@ -57,14 +55,22 @@ class Graph(object):
                 connections.append(newNode)
         return connections
 
+    def getGraph(self):
+        return self.graph
+
     def printGraph(self):
+        print("--- Printing graph ---")
         for key, values in self.graph.items():
             for value in values:
                 print(key, ' -> ', value.name, ' | ', value.weight)
+        print("--- --- --- ---")
 
 
-graphData = CSV('./../../files/test.csv')
 
-graph = Graph()
-graph.loadData(graphData.getData())
-graph.createGraph()
+
+# graphData = CSV('./../../files/test.csv')
+#
+# graph = Graph()
+# graph.loadData(graphData.getData())
+# graph.createGraph()
+# graph.printGraph()

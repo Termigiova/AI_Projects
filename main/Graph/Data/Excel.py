@@ -2,7 +2,7 @@ from queue import Queue
 
 import xlrd
 
-from main.graph.Constants import Constants
+from main.Graph.Utilities.Constants import Constants
 
 
 class Excel(object):
