@@ -18,17 +18,17 @@ class Graph(object):
         self.addFirstNodeToDiary()
         if not self.diary.empty():
             self.addNodeToGraph(self.diary.get())
-        print("Printing graph keys")
+        print("Printing graph key values")
         self.printGraph()
 
     def addFirstNodeToDiary(self):
         firstDataItem = self.data[Constants.FIRST_ITEM];
-        node = self.createNode(firstDataItem[Constants.ORIGIN], firstDataItem[Constants.WEIGHT])
+        node = Node(firstDataItem[Constants.ORIGIN], firstDataItem[Constants.WEIGHT])
         self.diary.put(node)
 
     def addNodeToGraph(self, node):
         if not self.findNodeInGraph(node):
-            print('Appending node to graph: ', node.name)
+            print('Appending text element as graph key: ', node.name)
             self.graph[node.name] = []
         connections = self.findAllConnections(node)
         if connections:
@@ -46,20 +46,14 @@ class Graph(object):
                     return graphKey
         return False
 
-    def createNode(self, name, weight):
-        newNode = Node()
-        newNode.setName(name)
-        newNode.setWeight(weight)
-        return newNode
-
     def findAllConnections(self, node):
         connections = []
         for nodeData in self.data:
             if node.name == nodeData[Constants.ORIGIN]:
-                newNode = self.createNode(nodeData[Constants.DESTINATION], nodeData[Constants.WEIGHT])
+                newNode = Node(nodeData[Constants.DESTINATION], nodeData[Constants.WEIGHT])
                 connections.append(newNode)
             elif node.name == nodeData[Constants.DESTINATION]:
-                newNode = self.createNode(nodeData[Constants.ORIGIN], nodeData[Constants.WEIGHT])
+                newNode = Node(nodeData[Constants.ORIGIN], nodeData[Constants.WEIGHT])
                 connections.append(newNode)
         return connections
 

@@ -3,10 +3,9 @@ class Node:
     name = None
     weight = None
 
-    def __init__(self, name = None, weight = None, connections = None):
+    def __init__(self, name = None, weight = None):
         self.name = name
         self.weight = weight
-        self.connections = connections
 
     def __hash__(self):
         return hash((self.name, self.weight))
