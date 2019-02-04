@@ -5,7 +5,7 @@ from main.Graph.Graph import Graph
 class DefaultGraph:
 
     def __init__(self):
-        graphData = CSV('./../../files/test.csv')
+        graphData = CSV('./../../files/Ciudades_Mexico.csv')
         self.graph = Graph()
         self.graph.loadData(graphData.getData())
         self.graph.createGraph()
