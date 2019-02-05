@@ -63,9 +63,9 @@ class Graph(object):
 
 
 
-graphData = CSV('./../../files/test.csv')
-
-graph = Graph()
-graph.loadData(graphData.getData())
-graph.createGraph()
-graph.printGraph()
+# graphData = CSV('./../../files/test.csv')
+#
+# graph = Graph()
+# graph.loadData(graphData.getData())
+# graph.createGraph()
+# graph.printGraph()
