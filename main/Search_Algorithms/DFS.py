@@ -15,7 +15,9 @@ class DFS:
         for key in self.graph.keys():
             visitedVertex[key] = False
 
-        self.findDFS(startingVertex, visitedVertex)
+        for key in self.graph.keys():
+            if not visitedVertex[key]:
+                self.findDFS(startingVertex, visitedVertex)
 
     def findDFS(self, currentVertex, visitedVertex):
         visitedVertex[currentVertex] = True

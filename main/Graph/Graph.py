@@ -9,20 +9,17 @@ class Graph(object):
 
     data = None
     graph = {}
-    diary = Queue()
 
     def loadData(self, data):
         self.data = data
 
     def createGraph(self):
-        self.addFirstNodeToDiary()
-        if not self.diary.empty():
-            self.addNodeToGraph(self.diary.get())
+        firstNode = self.getFirstNodeItemFromData()
+        self.addNodeToGraph(firstNode)
 
-    def addFirstNodeToDiary(self):
+    def getFirstNodeItemFromData(self):
         firstDataItem = self.data[Constants.FIRST_ITEM];
-        node = Node(firstDataItem[Constants.ORIGIN], firstDataItem[Constants.WEIGHT])
-        self.diary.put(node)
+        return Node(firstDataItem[Constants.ORIGIN], firstDataItem[Constants.WEIGHT])
 
     def addNodeToGraph(self, node):
         if not self.findNodeInGraph(node):
@@ -68,9 +65,9 @@ class Graph(object):
 
 
 
-# graphData = CSV('./../../files/test.csv')
-#
-# graph = Graph()
-# graph.loadData(graphData.getData())
-# graph.createGraph()
-# graph.printGraph()
+graphData = CSV('./../../files/test.csv')
+
+graph = Graph()
+graph.loadData(graphData.getData())
+graph.createGraph()
+graph.printGraph()
