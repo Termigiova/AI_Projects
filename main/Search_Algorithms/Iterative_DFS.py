@@ -21,9 +21,10 @@ class Iterative_DFS:
         return visitedVertex
 
     def DFS(self, startingVertex):
-        self.stack.put(startingVertex)
-        self.findDFS()
-
+        for vertex in self.graph.keys():
+            if not self.visitedVertex[vertex]:
+                self.stack.put(startingVertex)
+                self.findDFS()
 
     def findDFS(self):
         if not self.stack.empty():
@@ -43,5 +44,5 @@ class Iterative_DFS:
             print(item, end=' -> ')
 
 graph = Iterative_DFS()
-graph.DFS('Acapulco')
+graph.DFS('S')
 graph.printResult()
