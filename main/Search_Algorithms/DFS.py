@@ -9,28 +9,31 @@ class DFS:
         defaultGraph = DefaultGraph()
         defaultGraph.graph.printGraph()
         self.graph = defaultGraph.getGraph()
+        self.visitedVertex = self.initializeVisitedVertex()
 
-    def DFS(self, startingVertex):
+    def initializeVisitedVertex(self):
         visitedVertex = {}
         for key in self.graph.keys():
             visitedVertex[key] = False
+        return visitedVertex
 
-        for key in self.graph.keys():
-            if not visitedVertex[key]:
-                self.findDFS(startingVertex, visitedVertex)
+    def DFS(self, startingVertex):
+        for vertex in self.graph.keys():
+            if not self.visitedVertex[vertex]:
+                self.findDFS(startingVertex)
 
-    def findDFS(self, currentVertex, visitedVertex):
-        visitedVertex[currentVertex] = True
+    def findDFS(self, currentVertex):
+        self.visitedVertex[currentVertex] = True
         self.result.append(currentVertex)
 
         for vertex in self.graph[currentVertex]:
-            if not visitedVertex[vertex.name]:
-                self.findDFS(vertex.name, visitedVertex)
+            if not self.visitedVertex[vertex.name]:
+                self.findDFS(vertex.name)
 
     def printResult(self):
         for item in self.result:
             print(item, end=' -> ')
 
 graph = DFS()
-graph.DFS('Acapulco')
+graph.DFS('S')
 graph.printResult()
