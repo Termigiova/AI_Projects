@@ -1,5 +1,3 @@
-from queue import Queue
-
 from main.Graph.Utilities.Constants import Constants
 from main.Graph.Data.CSV import CSV
 from main.Graph.Data_Structures.Node import Node
