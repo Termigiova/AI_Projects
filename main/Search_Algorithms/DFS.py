@@ -17,11 +17,11 @@ class DFS:
 
         self.findDFS(startingVertex, visitedVertex)
 
-    def findDFS(self, startingVertex, visitedVertex):
-        visitedVertex[startingVertex] = True
-        self.result.append(startingVertex)
+    def findDFS(self, currentVertex, visitedVertex):
+        visitedVertex[currentVertex] = True
+        self.result.append(currentVertex)
 
-        for vertex in self.graph[startingVertex]:
+        for vertex in self.graph[currentVertex]:
             if not visitedVertex[vertex.name]:
                 self.findDFS(vertex.name, visitedVertex)
 
